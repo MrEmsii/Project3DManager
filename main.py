@@ -76,6 +76,9 @@ class FolderApp:
         dsc2 = os.path.join(self.base_directory, project_name)
 
         if not os.path.isdir(dsc2):
+            if not os.path.isdir(self.base_directory):
+                print(self.base_directory)
+                os.mkdir(self.base_directory)
             dscs = ["\\STL", "\\G-code", "\\Prusa"]
             os.mkdir(dsc2)
             for dict in dscs:
@@ -138,21 +141,22 @@ class FolderApp:
 
         self.add_element_icon = PhotoImage(file=os.path.join(self.dsc, "image", "add_element_icon.png")).subsample(10, 10)
         self.delete_element_icon = PhotoImage(file=os.path.join(self.dsc, "image", "delete_element_icon.png")).subsample(10, 10)
+        self.refresh_element_icon = PhotoImage(file=os.path.join(self.dsc, "image", "refresh_element_icon.png")).subsample(10, 10)
 
 
-        self.add_element_button = ttk.Button(self.buttom_frame, text="Dodaj \nprojekt", command=self.add_project, width = 12, image=self.add_project_icon, compound="left")
+        self.add_element_button = ttk.Button(self.buttom_frame, text="Dodaj \nprojekt", command=self.add_project, width = 8, image=self.add_project_icon, compound="left")
         self.add_element_button.pack(side='top', pady=3, fill='x')
-        self.add_element_button = ttk.Button(self.buttom_frame, text="Edytuj \nprojekt", command=self.mod_project, width = 12, image=self.edit_project_icon, compound="left")
+        self.add_element_button = ttk.Button(self.buttom_frame, text="Edytuj \nprojekt", command=self.mod_project, width = 8, image=self.edit_project_icon, compound="left")
         self.add_element_button.pack(side='top', pady=3, fill='x')
-        self.add_element_button = ttk.Button(self.buttom_frame, text="Usuń \nprojekt", command=self.delete_project, width = 12, image=self.delete_project_icon, compound="left")
+        self.add_element_button = ttk.Button(self.buttom_frame, text="Usuń \nprojekt", command=self.delete_project, width = 8, image=self.delete_project_icon, compound="left")
         self.add_element_button.pack(side='top', pady=3, fill='x')
 
-        self.add_element_button = ttk.Button(self.buttom_frame, text="Dodaj \nelement", command=self.add_element, width = 12, image=self.add_element_icon, compound="left")
+        self.add_element_button = ttk.Button(self.buttom_frame, text="Dodaj \nelement", command=self.add_element, width = 8, image=self.add_element_icon, compound="left")
         self.add_element_button.pack(side='top', pady=(30,3), fill='x')
-        self.add_element_button = ttk.Button(self.buttom_frame, text="Usuń \nelement", command=self.add_element, width = 12, image=self.delete_element_icon, compound="left")
+        self.add_element_button = ttk.Button(self.buttom_frame, text="Usuń \nelement", command=self.add_element, width = 8, image=self.delete_element_icon, compound="left")
         self.add_element_button.pack(side='top', pady=(3, 30), fill='x')
 
-        self.add_element_button = ttk.Button(self.buttom_frame, text="Odśwież", command=self.refresh, width = 12, image=self.delete_element_icon, compound="left")
+        self.add_element_button = ttk.Button(self.buttom_frame, text="Odśwież", command=self.refresh, width = 8, image=self.refresh_element_icon, compound="left")
         self.add_element_button.pack(side='bottom', pady=(3,0), fill='x')
 
 
